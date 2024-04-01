@@ -1,0 +1,484 @@
+------------------------
+exp 1 - jdk, jre basic
+------------------------
+Area.java
+-------------
+package triangle_area;
+
+public class Area {
+
+	public static void main(String[] args) {
+		int height = 5, base = 3;
+		float area = 0.5F*height*base;		
+		System.out.println("Area= "+area);
+	}
+}
+
+
+
+------------------------
+exp 3 - overriding
+------------------------
+Overriding.java
+--------------------
+
+package exp3_1;
+public class Overriding {
+	public void disp()
+	   {
+		System.out.println("disp() method of parent class");
+	   }	   
+	}
+	class Demo extends Overriding{
+	   public void disp(){
+		System.out.println("disp() method of Child class");
+	   }
+	   public void newMethod(){
+		System.out.println("new method of child class");
+	   }
+	public static void main(String[] args) {
+		Overriding obj = new Overriding();
+		obj.disp();
+		Overriding obj2 = new Demo();
+		obj2.disp();
+	}
+}
+
+Overloading_parameter.java
+------------------------
+package exp30; //data type of parameters
+
+public class Overloading_parameter {
+
+    public void disp(int num1, int num2) {
+        System.out.println(num1+", "+num2);
+    }
+    public void disp(double num1, double num2) {
+        System.out.println(num1+", "+num2);
+    }
+
+    public static void main(String[] args) {
+    	Overloading_parameter obj = new Overloading_parameter();
+    	System.out.println("Data type of parameters.");
+        obj.disp(5, 10);
+        obj.disp(3.5, 2.7);
+    }
+}
+
+
+Overloading.java
+---------------
+package exp30; //number of paramaters
+
+public class Overloading {
+    public void disp(char c)
+    {
+         System.out.println(c);
+    }
+    public void disp(char c, int num)  
+    {
+         System.out.println(c + " "+num);
+    }
+}
+class Num_Para
+{
+   public static void main(String args[])
+   {
+	   Overloading obj = new Overloading();
+	   System.out.println("Number of parameters.");
+       obj.disp('a');
+       obj.disp('a',10);
+   }
+}
+
+para_seq.java
+---------------------
+package exp30; //sequence of parameters
+
+public class para_seq {
+
+    public void display(int num, double decimal) {
+        System.out.println(num + ", " + decimal);
+    }
+
+    public void display(double decimal, int num) {
+        System.out.println(decimal + ", " + num);
+    }
+
+    public static void main(String[] args) {
+        para_seq obj = new para_seq();
+
+    	System.out.println("Sequence of Data type of parameters.");
+        obj.display(5, 3.5);
+        obj.display(2.7, 10);
+    }
+}
+
+
+
+
+
+------------------------
+exp 4 - polymorphism
+------------------------
+Animal.java
+-------------------
+
+package exp_4; //dynamic polymorphism
+
+public class Animal {
+    public void animalSound() {
+        System.out.println("Default Sound");
+    }
+}
+
+class Dog extends Animal {
+    public void animalSound() {
+        System.out.println("Woof");
+    }
+
+    public static void main(String args[]) {
+        Animal obj = new Dog();
+        obj.animalSound();
+    }
+}
+
+
+ExampleOverloading.java
+---------------------
+package exp_4; //static polymorphism
+
+class DisplayOverloading {
+    public void disp(char c) {
+        System.out.println(c);
+    }
+
+    public void disp(char c, int num) {
+        System.out.println(c + " " + num);
+    }
+}
+
+public class ExampleOverloading {
+    public static void main(String args[]) {
+        DisplayOverloading obj = new DisplayOverloading();
+        obj.disp('a');
+        obj.disp('a', 10);
+    }
+}
+
+
+
+
+
+------------------------
+exp 4 - inheritance, super key, overriding
+------------------------
+Main.java
+-------------------
+
+package exp_5;
+//single inheritance
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class one {
+	public void print_geek() {
+		System.out.println("Geeks");
+	}
+}
+class two extends one {
+	public void print_for() {
+		System.out.println("for");
+	}
+}
+public class Main {
+	public static void main(String[] args) {
+		two g = new two();
+		g.print_geek();
+		g.print_for();
+		g.print_geek();
+	}
+}
+
+
+Multilevel.java
+------------------------
+package exp_5; //Multilevel inheritance
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class one {
+	public void print_geek() {
+		System.out.println("Geeks");
+	}
+}
+class two extends one {
+	public void print_for() {
+		System.out.println("for");
+	}
+}
+class three extends two {
+	public void print_geek() {
+		System.out.println("Geeks");
+	}
+}
+public class Multilevel {
+	public static void main(String[] args) {
+		three g = new three();
+		g.print_geek();
+		g.print_for();
+		g.print_geek();
+	}
+}
+
+
+
+
+
+
+
+------------------------
+exp 6 - exception handling
+------------------------
+CustomTest.java
+------------------
+
+package exp_6;
+import java.util.Scanner;
+public class CustomTest {
+	public static void main(String arr[]) {
+		try {
+			Scanner obj = new Scanner(System.in);
+			int a = obj.nextInt();
+			if (a < 10 || a > 50)
+				throw (new Exception("valid range is 10 to 50"));
+			{
+				int s = a * a;
+				System.out.println("Square is:" + s);
+			}
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+}
+
+-----------------------------------
+Divide2.java
+-------------------
+
+package exp_6;
+import java.util.Scanner;
+public class Divide2 {
+	public static void main(String arr[]) {
+		try {
+			Scanner obj1 = new Scanner(System.in);
+			int a = obj1.nextInt();
+			int b = obj1.nextInt();
+			if (arr.length < 2)
+				throw (new Exception("two argument must be provided"));
+			if (b == 0)
+				throw (new Exception("second argument should be non zero"));
+			int c = a / b;
+			System.out.println("result:" + c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}
+
+-----------------------------------
+Divide3.java
+-------------------
+
+package exp_6;
+import java.util.Scanner;
+public class Divide3 {
+	public static int divide(int x, int y) {
+		int z = 0;
+		try {
+			try {
+				z = x / y;
+			} finally {
+			}
+		} catch (ArithmeticException ex) {
+			System.out.println(ex);
+		}
+		return z;
+	}
+	public static void main(String arr[]) {
+		try {
+			Scanner obj = new Scanner(System.in);
+			int a = obj.nextInt();
+			int b = obj.nextInt();
+			int c = divide(a, b);
+			System.out.println("Result is=" + c);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}
+
+
+------------------------
+exp 7 - multithreading
+------------------------
+ThreadTest.java
+-----------------
+
+package exp_7;
+
+class PC1 {
+    int value;
+    boolean produced = false;
+
+    public synchronized void produce(int x) {
+        if (produced) {
+            System.out.println("Producer entered the monitor out of turn, suspending...");
+            try {
+                wait();
+            } catch (Exception e) {}
+        }
+        value = x;
+        System.out.println(value + " is produced");
+        produced = true;
+        notify();
+    }
+
+    public synchronized void consume() {
+        if (!produced) {
+            System.out.println("Consumer entered the monitor out of turn, suspending...");
+            try {
+                wait();
+            } catch (Exception e) {}
+        }
+        System.out.println(value + " is consumed");
+        produced = false;
+        notify();
+    }
+}
+
+class Producer extends Thread {
+    PC1 buffer;
+
+    public Producer(PC1 b) {
+        buffer = b;
+    }
+
+    public void run() {
+        System.out.println("Producer started, producing values...");
+        for (int i = 1; i <= 10; i++)
+            buffer.produce(i);
+    }
+}
+
+class Consumer extends Thread {
+    PC1 buffer;
+
+    public Consumer(PC1 b) {
+        buffer = b;
+    }
+
+    public void run() {
+        System.out.println("Consumer started, consuming values...");
+        for (int i = 1; i <= 10; i++)
+            buffer.consume();
+    }
+}
+
+public class PC1 {
+    public static void main(String arr[]) {
+        PC1 b = new PC1();
+        Producer p = new Producer(b);
+        Consumer c = new Consumer(b);
+        p.start();
+        c.start();
+    }
+}
+
+
+
+------------------------
+exp 8 - synhronization
+------------------------
+Printer.java
+--------------
+
+package exp_8;
+
+public class Printer {
+	public synchronized void Print(String msg) {
+		System.out.println("[");
+		try {
+			Thread.sleep(5000);
+			System.out.println(msg);
+			Thread.sleep(5000);
+			Thread.sleep(5000);
+		} catch (Exception e) {
+		}
+		System.out.println("]");
+	}
+}
+
+class User extends Thread {
+	String msg;
+	Printer p;
+
+	public User(Printer p, String m) {
+		this.p = p;
+		msg = m;
+	}
+
+	public void run() {
+		p.Print(msg);
+
+	}
+}
+
+class SynDemo {
+	public static void main(String arr[]) {
+		System.out.println("creating a pointer.");
+		Printer p = new Printer();
+		System.out.println("creating two use threads and giving them reference of the printer");
+		User u1 = new User(p, "it is user one");
+		User u2 = new User(p, "it is user two");
+		User u3 = new User(p, "it is user three");
+		System.out.println("Starting user threads.");
+		u1.start();
+		u2.start();
+		u3.start();
+	}
+}
+
+
+
+------------------------
+exp 9 - jdbc
+------------------------
+jdbc1.java
+-------------------
+
+package DBDemo1;
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+public class jdbc1 {
+
+	public static void main(String[]args) throws ClassNotFoundException, SQLException{
+		String url= "jdbc:mysql://127.0.0.1/database1";
+		String username= "root";
+		String password="";
+		String query= "Select * from info where id=1"; 
+		Class.forName("com.mysql.jdbc.Driver");
+		try {
+		Connection connection= (Connection) DriverManager.getConnection(url, username, password);
+	
+		java.sql.Statement statement= connection.createStatement();
+		statement.executeQuery(query);
+		System.out.println("Successful");
+		}
+		catch(SQLException e) {
+			System.out.println("Unsuccessful");
+		}		
+	}
+}
+
